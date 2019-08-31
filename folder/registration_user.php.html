@@ -1,12 +1,4 @@
-<?php 
-
-include("conection.php");
-error_reporting(0);
-?>
-
-
 <!DOCTYPE html>
-
 <html>
 <head>
 	<title></title>
@@ -29,24 +21,23 @@ error_reporting(0);
 	<h1>REGISTRATION FORM</h1>
 </head>
 <body>
-	
-	<form  method="POST" onsubmit="return check()">
+	<form id="f1" onsubmit=" return check()" method="post" action="onload.html">
 		<table bgcolor="lightblue" border="1" cellpadding="15" align="center">
 		<tr>
 		      <td>Enter your name:</td>
-		      <td><input type="text" name="name" id="name"><br></td>
+		      <td><input type="text" name="n1" id="name"><br></td>
 		</tr>
 		<tr>
 		   <td>
 			Enter your email:
 		</td>
-			<td><input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="e1"><br></td>
+			<td><input type="email" name="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="e1"><br></td>
 	   </tr>
 	   <tr>
 	   	 <td>
 		Enter your mobile number:
 	    </td>
-		<td><input type="text" name="phnno" id="checkno"><br>
+		<td><input type="text" name="n2" id="checkno"><br>
 		 </td>
 	   </tr>
 	   <tr>
@@ -60,7 +51,7 @@ error_reporting(0);
 	</table>
 	<table align="center">
 		<tr><td>
-        <input type="submit" id="s1" name="submit" value="submit">
+        <input type="submit" id="s1" value="submit">
         </td>
     </tr>
         <tr><td>
@@ -73,7 +64,7 @@ error_reporting(0);
         
 	</form>
 
-    <script type="text/javascript">
+	<script type="text/javascript">
 		
 
 		function check(){
@@ -177,7 +168,7 @@ error_reporting(0);
 				document.getElementById("s").innerHTML="atleast one upper letter must be enter"
 				document.getElementById("s").style.color="red"
 				return false;
-			} 
+			}
 			else{
 			   document.getElementById("s").innerHTML="successful"
 				document.getElementById("s").style.color="green"
@@ -185,49 +176,8 @@ error_reporting(0);
 			}
           
         }
+
 	</script>
-	<?php
-	// if(isset($_POST['submit'])){
-	// 	$name = $_POST['name'];
-	// 	$email = $_POST['email'];
-	// 	$phnno = $_POST['phnno'];
-	// 	$password = $_POST['password'];
-	// 	echo $name;
-	// 	echo $email;
-	// 	echo $phnno;
-	// 	echo $password;
-	// }
-
-   if (isset($_POST['submit'])) 
- {
- 	
- 	$name=$_POST['name'];
- 	$e=$_POST['email'];
- 	$p=$_POST['phnno'];
- 	$s=md5($_POST['password']);
- 	 	
- 	if ($name!="" && $e!="" && $p!="" && $s!="")
- 		{
- 		
- 		$query="insert into registration values('','$name','$e','$p','$s')";
- 		$data=mysqli_query($con,$query);
-
- 			if ($data) 
- 			{
- 			  echo "data inserted successfully";
- 			}
-       }
-       else
-       {
-
- 			echo "required";
- 	    }
-	 
-}
-
-
-
-	?>
 
 </body>
 </html>
